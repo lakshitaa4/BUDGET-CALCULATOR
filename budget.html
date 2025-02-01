@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Budget Calculator 2025</title>
+    <meta name="description" content="Calculate your tax savings for the year 2025 with our India Budget Calculator.">
+    <meta name="keywords" content="India, Budget, Calculator, Tax Savings, 2025">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" defer></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">Budget Calculator 2025</div>
+        <div class="nav-links">
+            <a href="#calculator" class="active">Calculator</a>
+            <a href="#deductions">Deductions</a>
+            <a href="#insights">Budget Insights</a>
+        </div>
+    </div>
+  </nav>
+
+    <main>
+        <section id="calculator" class="calculator-section">
+            <div class="container">
+                <h1>India Tax Savings Calculator 2025</h1>
+                <div class="calculator-grid">
+                    <div class="input-section">
+                        <form id="taxForm">
+                            <div class="form-group">
+                                <label for="income">Annual Income (₹)</label>
+                                <input type="number" id="income" name="income" required 
+                                       min="0" step="1000" placeholder="Enter your annual income" aria-label="Annual Income in Rupees">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Age Group</label>
+                                <select id="age" name="age">
+                                    <option value="general">Below 60 years</option>
+                                    <option value="senior">60-80 years</option>
+                                    <option value="super-senior">Above 80 years</option>
+                                </select>
+                            </div>
+
+                            <div class="deductions-container">
+                                <h3>Standard Deductions</h3>
+                                <div class="form-group">
+                                    <label for="section80C" title="You can invest up to ₹1,50,000 in eligible instruments like PPF, EPF, etc.">Section 80C Investments</label>
+                                    <input type="number" id="section80C" name="section80C" 
+                                           min="0" max="150000" placeholder="Max: ₹1,50,000 for Section 80C">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hra">HRA Claimed</label>
+                                    <input type="number" id="hra" name="hra" 
+                                           min="0" placeholder="Enter HRA amount">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="calculate-btn">Calculate Tax Savings</button>
+                        </form>
+                    </div>
+
+                    <div class="results-section">
+                        <div id="results" class="hidden">
+                            <h2>Tax Analysis</h2>
+                            <div class="tax-breakdown"></div>
+                            <canvas id="taxChart"></canvas>
+                            <div class="savings-highlight"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="deductions" class="deductions-section">
+          <div class="container">
+              <h2>Tax Deductions Available Under the 2025 Budget</h2>
+              <p>The Indian Budget for 2025 introduces a variety of tax deductions that can help you reduce your taxable income. Here's a breakdown of the available deductions:</p>
+      
+              <div class="deductions-grid">
+                  <div class="deduction-card">
+                      <h3>Section 80C: Investments and Savings</h3>
+                      <p>Section 80C allows you to claim deductions for investments made in specific instruments. The maximum amount you can claim under this section is ₹1,50,000. Some of the eligible instruments include:</p>
+                      <ul>
+                          <li>Pension funds</li>
+                          <li>Public Provident Fund (PPF)</li>
+                          <li>Life insurance premiums</li>
+                          <li>Employee Provident Fund (EPF)</li>
+                          <li>National Savings Certificate (NSC)</li>
+                          <li>Five-year fixed deposit with banks</li>
+                      </ul>
+                  </div>
+      
+                  <div class="deduction-card">
+                      <h3>Section 80D: Health Insurance Premium</h3>
+                      <p>You can claim deductions under Section 80D for premiums paid on health insurance policies for yourself, your family, and parents. The maximum deduction available is:</p>
+                      <ul>
+                          <li>₹25,000 for self and family (₹50,000 if senior citizens)</li>
+                          <li>₹50,000 for parents (₹1,00,000 if senior citizens)</li>
+                      </ul>
+                  </div>
+      
+                  <div class="deduction-card">
+                      <h3>Section 24(b): Home Loan Interest</h3>
+                      <p>If you have a home loan, you can claim a deduction of up to ₹2,00,000 on the interest paid on your home loan under Section 24(b) of the Income Tax Act. This deduction applies to both self-occupied and rented properties.</p>
+                  </div>
+      
+                  <div class="deduction-card">
+                      <h3>Section 10(14): House Rent Allowance (HRA)</h3>
+                      <p>If you receive HRA from your employer and live in a rented house, you may be eligible for a deduction under Section 10(14). The deduction amount is calculated based on factors such as the salary, rent paid, and the city you live in. Ensure you provide accurate details when claiming this deduction.</p>
+                  </div>
+      
+                  <div class="deduction-card">
+                      <h3>Section 80E: Education Loan</h3>
+                      <p>Under Section 80E, you can claim deductions on the interest paid on loans taken for higher education. There is no upper limit for this deduction, and it applies to loans taken for self, spouse, children, or for a student for whom the taxpayer is a legal guardian.</p>
+                  </div>
+      
+                  <div class="deduction-card">
+                      <h3>Section 80G: Donations to Charitable Institutions</h3>
+                      <p>Donations made to recognized charitable institutions can be claimed as deductions under Section 80G. You can claim a deduction of up to 50% or 100% of the donated amount, depending on the type of institution and the specific conditions.</p>
+                  </div>
+              </div>
+              
+              <p><strong>Note:</strong> The deductions mentioned above are subject to various terms and conditions, and the amount eligible for deductions may vary based on your income and other factors. Always consult a tax professional for personalized advice and guidance on deductions.</p>
+          </div>
+      </section>
+      
+      <section id="tax-slabs" class="tax-slabs-section">
+        <div class="container">
+            <h2>Income Tax Slabs for 2025</h2>
+            <p>Below are the revised income tax slabs for the year 2025, as per the new budget:</p>
+            
+            <table class="tax-slabs-table">
+                <thead>
+                    <tr>
+                        <th>Income Range (₹)</th>
+                        <th>Tax Rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0 - 4 Lakh</td>
+                        <td>Nil</td>
+                    </tr>
+                    <tr>
+                        <td>4 - 8 Lakh</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                        <td>8 - 12 Lakh</td>
+                        <td>10%</td>
+                    </tr>
+                    <tr>
+                        <td>12 - 16 Lakh</td>
+                        <td>15%</td>
+                    </tr>
+                    <tr>
+                        <td>16 - 20 Lakh</td>
+                        <td>20%</td>
+                    </tr>
+                    <tr>
+                        <td>20 - 24 Lakh</td>
+                        <td>25%</td>
+                    </tr>
+                    <tr>
+                        <td>Above 24 Lakh</td>
+                        <td>30%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+        <section id="insights" class="insights-section">
+            <div class="container">
+                <h2>Budget 2025 Key Highlights</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <h3>New Tax Regime</h3>
+                        <p>Understand the revised tax slabs and their impact on your savings.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h3>Deductions</h3>
+                        <p>Explore available tax deductions and exemptions under the new budget.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h3>Budget Updates</h3>
+                        <p>Latest updates and analysis from the 2025 budget announcement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Disclaimer: This calculator is for educational purposes only. Please consult a tax professional for accurate advice.</p>
+        </div>
+    </footer>
+
+    <script src="tax-calculator.js">
+    </script>
+
+</body>
+</html>
